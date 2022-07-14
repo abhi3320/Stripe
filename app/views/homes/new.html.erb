@@ -1,0 +1,74 @@
+
+
+
+<b> Hello User </b><br>  
+<table>
+	<tr>
+		<td><%= form_with url: homes_path, multipart: true do |form| %>
+			  <%= file_field_tag :file %>
+			  <%= form.submit %>
+	  	<% end %>
+	  </td>
+	  <td><%= button_to 'Calendar' , test_homes_path , method: :get , :class => "btn btn-primary" %></td>
+	  <i class="bi bi-alarm"></i>
+      <td><%= button_to "Products" ,  products_path, method: :get %></td>
+	</tr>
+</table>
+<br>
+
+<%= form_tag root_path , method: :get do %>
+<%#debugger%>
+ <p>
+ 	<%= text_field_tag :q , params[:q]%>
+ 	<%= submit_tag "Search"%>
+ </p>
+ <%end%>
+
+
+
+
+
+
+<h> Listing  Details </h>
+<div class="media">
+<div class="media-body">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>FirstName</th>
+				<th>LastName</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Zip</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<%@csv.each do |u|%>
+			<tr>
+				<td><%= u.FirstName%></td>
+				<td><%= u.LastName%></td>
+				<td><%=u.Phone%></td>
+				<td><%= u.Email%></td>
+				<td><%=u.Zip%></td>
+				<td><%= button_to "Create Event" , events_path , method: :get , :class => "btn btn-danger"%></td>
+			</tr>
+			<%end%>
+		</tbody>
+	</table>
+</div>
+</div>
+
+
+<br>
+
+
+<h2><b>Similar data</b></h2>
+<%= link_to "Duplicates"  , home_path(:id)%> :-
+<%#= link_to "PDF File" ,root_path(format: "pdf") %>
+
+
+
+
+
+
