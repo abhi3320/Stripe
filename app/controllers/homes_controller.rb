@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  def index  
+  def new 
     #debugger
     if params[:q].present?
   	@csv = Csv.search(params[:q])
